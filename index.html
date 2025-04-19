@@ -94,6 +94,21 @@
         padding: 10px 16px;
         font-size: 14px;
       }
+      .color-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.color-box {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #fff;
+  border-radius: 6px;
+  box-shadow: 0 0 3px rgba(255,255,255,0.6);
+}
     }
   </style>
 </head>
@@ -113,9 +128,20 @@
 
   <div class="content">
     <div class="description">
-      <p>Perfectly crafted measuring cups for accurate and easy pouring. A must-have for every kitchen to make cooking simple and precise. This is a high-quality 3D model designed for real-time preview. Perfect for showcasing your product.</p>
+     <p>Perfectly crafted measuring cups for accurate and easy pouring. A must-have for every kitchen to make cooking simple and precise. This is a high-quality 3D model designed for real-time preview. Perfect for showcasing your product.</p>
+       <p>Available Colors:</p>
+<div class="color-boxes">
+  <span class="color-box" style="background-color: white;" title="White"></span>
+  <span class="color-box" style="background-color: black;" title="Black"></span>
+  <span class="color-box" style="background-color: green;" title="Green"></span>
+  <span class="color-box" style="background-color: orange;" title="Orange"></span>
+  <span class="color-box" style="background-color: red;" title="Red"></span>
+  <span class="color-box" style="background-color: yellow;" title="Yellow"></span>
+  <span class="color-box" style="background-color: grey;" title="Grey"></span>
+  <span class="color-box" style="background-color: brown;" title="Brown"></span>
+</div>
     </div>
-    <button class="buy-button" onclick="openMeesho()">Buy Now</button>
+   <button class="buy-button" onclick="openMeesho()">Buy Now</button>
   </div>
 
   <script>
