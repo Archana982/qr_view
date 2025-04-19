@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3D Model Viewer</title>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      font-family: Arial, sans-serif;
+    }
+
+    model-viewer {
+      width: 100vw;
+      height: 60vh;
+    }
+
+    .heading {
+      text-align: center;
+      color: white;
+      font-size: 24px;
+      padding-top: 16px;
+    }
+
+    .content {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .description {
+      font-size: 18px;
+      color: white;
+      margin-bottom: 20px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .buy-button {
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #ff3366;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .buy-button:hover {
+      background-color: #cc0044;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .heading {
+        font-size: 20px;
+      }
+
+      model-viewer {
+        height: 50vh;
+      }
+
+      .description {
+        font-size: 16px;
+        padding: 0 10px;
+      }
+
+      .buy-button {
+        padding: 10px 20px;
+        font-size: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .heading {
+        font-size: 18px;
+      }
+
+      model-viewer {
+        height: 45vh;
+      }
+
+      .description {
+        font-size: 15px;
+        padding: 0 8px;
+      }
+
+      .buy-button {
+        padding: 10px 16px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="heading"><h2>Measuring Cup</h2></div>
+
+  <model-viewer
+    id="viewer"
+    src=""
+    auto-rotate
+    camera-controls
+    environment-image="neutral"
+    exposure="1.0"
+    shadow-intensity="1"
+    shadow-softness="0"
+  ></model-viewer>
+
+  <div class="content">
+    <div class="description">
+      <p>Perfectly crafted measuring cups for accurate and easy pouring. A must-have for every kitchen to make cooking simple and precise. This is a high-quality 3D model designed for real-time preview. Perfect for showcasing your product.</p>
+    </div>
+    <button class="buy-button" onclick="openMeesho()">Buy Now</button>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const modelUrl = urlParams.get('model') || "https://raw.githubusercontent.com/Archana982/3d-models/master/Measuring_Cup.GLB";
+    const viewer = document.getElementById('viewer');
+
+    viewer.src = decodeURIComponent(modelUrl);
+
+    viewer.addEventListener('load', () => {
+      const materials = viewer.model?.materials;
+      if (materials) {
+        materials.forEach(material => {
+          material.pbrMetallicRoughness.setBaseColorFactor([0.95, 0.95, 0.95, 1.0]);
+          material.pbrMetallicRoughness.setMetallicFactor(0.0);
+          material.pbrMetallicRoughness.setRoughnessFactor(0.4);
+        });
+      }
+    });
+
+    function openMeesho() {
+      const meeshoAppLink = "meesho://home";
+      const meeshoPlayStoreLink = "https://play.google.com/store/apps/details?id=com.meesho.supply";
+
+      const now = Date.now();
+      window.location.href = meeshoAppLink;
+
+      setTimeout(() => {
+        if (Date.now() - now < 2100) {
+          window.location.href = meeshoPlayStoreLink;
+        }
+      }, 1500);
+    }
+  </script>
+</body>
+</html>
